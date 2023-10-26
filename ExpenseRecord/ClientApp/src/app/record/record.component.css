@@ -1,0 +1,39 @@
+.title-head {
+    width: 480px;
+    /* height: 31px;
+    text-align: center; */
+    font-size: 24px;
+    color: rgb(60, 98, 194);
+    margin: 16px 0 16px 150px;
+}
+
+
+.item-des {
+    display: inline-block;
+    width: 310px;
+    
+}
+
+.item-checkbox {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin: 0 10px 0 0;
+}
+
+.list-group{
+  display: absolute;
+  width: 410px;
+  height: 350px;
+  margin-left: 18px;
+  margin-top: 30px;
+}
+.add-item{
+    display: absolute;
+    margin-left: 40px;
+    vertical-align: middle;
+}
+
+.list-actions{
+    margin-left: 50px;
+}

@@ -1,0 +1,12 @@
+.page {
+    width: 480px;
+    height: 640px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid #C7D0D8;
+    border-radius: 8px;
+  }

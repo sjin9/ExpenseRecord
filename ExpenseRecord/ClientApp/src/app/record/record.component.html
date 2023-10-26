@@ -1,0 +1,60 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<h2 class="title-head">Expense Record</h2>
+
+<div class="list-actions">
+  <button (click)="toggleSortByDesc()" class="btn btn-outline-dark">
+    <span>Sort by Description</span>
+    <ng-container *ngIf="sortByDescDir">
+      &nbsp;
+      <span *ngIf="sortByDescDir === SortDir.Asc"><strong>&#8593;</strong></span>
+      <span *ngIf="sortByDescDir === SortDir.Desc"><strong>&#8595;</strong></span>
+    </ng-container>
+  </button>
+  <button (click)="toggleSortByDate()" class="btn btn-outline-dark">
+    <span>Sort by Created Time</span>
+    <ng-container *ngIf="sortByDateDir">
+      &nbsp;
+      <span *ngIf="sortByDateDir === SortDir.Asc"><strong>&#8593;</strong></span>
+      <span *ngIf="sortByDateDir === SortDir.Desc"><strong>&#8595;</strong></span>
+    </ng-container>
+  </button>   
+</div>
+
+<ul class="list-group list-group-horizontal-xxl">
+  <div><li *ngFor="let item of items" class="list-group-item list-group-item"> <!-- looping through item description -->
+
+    <span class="item-des">{{item.description}}</span>
+      
+    <!-- </a> -->
+    <!-- <button [class.selected]="item === selectedItem"
+    type="button" (click)="onSelect(item)">   -->
+    <!-- </button> -->
+    <button type="button" class="btn btn-outline-danger" title="delete item"
+    (click)="delete(item)">x</button>
+  <!-- </div> -->
+  </li></div>
+</ul>
+
+<div class="add-item">
+    <div>
+        <label >Description: </label>
+        <input id="new-des" #item/>
+    </div>
+    <div>
+        <label >Type: </label>
+        <input id="new-des" #item/>
+    </div>
+    <div>
+        <label >Amount: </label>
+        <input id="new-des" #item/>
+    </div>
+
+  
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button type="button" class="btn btn-primary" (click)="add(item.value); item.value=''">
+      Create
+    </button>
+  </div>

@@ -1,0 +1,17 @@
+.changeDes {
+    display: inline-block;
+    width: 400px;
+    height: 50px;
+    font-size: 18px;
+    line-height: 22px;
+    vertical-align: middle;
+    margin-left: 35px;
+  }
+  
+  .btn{
+    display: absolute;
+    margin-left: 35px;
+    margin-top: 35px;
+    margin-bottom: 35px;
+  }
+  

@@ -1,10 +1,16 @@
+using ExpenseRecord.Models;
+using ExpenseRecord.Services;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddSwaggerGen();
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddSingleton<IExpenseRecordService, InMemoryExpenseRecordService>();
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -17,6 +23,13 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
+app.UseSwagger();
+app.UseSwaggerUI();
+
+app.UseCors((x) =>
+{
+    x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+});
 
 app.MapControllerRoute(
     name: "default",
