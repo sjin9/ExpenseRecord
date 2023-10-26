@@ -16,6 +16,7 @@ namespace ExpenseRecord.Services
         public Task<List<ExpenseRecordDto>> GetAsync()
         {
             return Task.FromResult(_ExpenseRecords);
+            /*return _ExpenseRecords.Select(GenerateRecordDto).OrderByDescending(item => item.CreatedTime).ToList();*/
 
         }
 
@@ -50,6 +51,18 @@ namespace ExpenseRecord.Services
                 _ExpenseRecords[index] = updatedExpenseRecord;
             }
             return Task.CompletedTask;
+        }
+
+        private ExpenseRecordDto GenerateRecordDto(ExpenseRecordDto expenseRecord)
+        {
+            return new ExpenseRecordDto
+            {
+                Description = expenseRecord.Description,
+                Type = expenseRecord.Type,
+                Amount = expenseRecord.Amount,
+                CreatedTime = expenseRecord.CreatedTime,
+                Id = expenseRecord.Id,
+            };
         }
     }
 }

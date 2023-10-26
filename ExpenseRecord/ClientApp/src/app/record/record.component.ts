@@ -16,6 +16,7 @@ export class RecordComponent implements OnInit {
   readonly SortDir = SortDir;
   // private readonly updateList$$: Subject<Item[]> = new Subject<Item[]>();
   private readonly updateList$$: Subject<void> = new Subject<void>();
+  // public newItem: Item;
 
   items: Item[]=[]; //inherit interface Items
   sorted_items: Item[] = [];
@@ -34,11 +35,11 @@ export class RecordComponent implements OnInit {
   ngOnInit(): void{
     this.getRecord();
 
-    this.sorted_byDate = this.items.sort((a, b) => {
-      if (a.createdTime > b.createdTime) {
-        return -1;
+    this.items = this.items.sort((a, b) => {
+      if (a.createdTime < b.createdTime) {
+        return 1;
       } 
-      else if (a.createdTime < b.createdTime) return 1;
+      else if (a.createdTime > b.createdTime) return -1;
       else return 0;
     });
     
@@ -49,30 +50,35 @@ export class RecordComponent implements OnInit {
     //items refer to items in service, this.item refers to items in this component.ts
   }
 
-  add(description: string): void{
-    description = description.trim(); //去掉字符串里面的空格
+  load(): void {
+    this.recordservice.getRecord().subscribe({
+      next: item => {
+        this.items = item;
+      }
+    });
+  }
+
+  add(description: string, type:string, amount:string): void{
+    description = description.trim(); 
     if (!description) { return; }
-    this.recordservice.addItem({ description } as Item)
+    this.recordservice.addItem({ description,type, amount } as Item)
       .subscribe(item => {
         this.items.push(item);
       });
   }
+  //   add(): void {
+
+  //   if (!this.newItem) { return; }
+  //   this.recordservice.addItem(this.newItem).subscribe(() => {
+  //     this.newItem = {} as Item;
+  //     this.load();
+  //   })
+  // }
   
   delete(item: Item): void {
     this.items = this.items.filter(i => i !== item);
     this.recordservice.deleteItem(item.id).subscribe();
   }
-
-  // sortByDescDir(): void{
-  //   this.sorted_items = this.items.sort((a, b) => {
-  //     if (a.des < b.des) {
-  //       return -1;
-  //     } 
-  //     else if (a.des > b.des) return 1;
-  //     else return 0;
-  //   });
-  // }
-
 
 
 

@@ -23,38 +23,62 @@
   </button>   
 </div>
 
-<ul class="list-group list-group-horizontal-xxl">
-  <div><li *ngFor="let item of items" class="list-group-item list-group-item"> <!-- looping through item description -->
-
-    <span class="item-des">{{item.description}}</span>
-      
-    <!-- </a> -->
-    <!-- <button [class.selected]="item === selectedItem"
-    type="button" (click)="onSelect(item)">   -->
-    <!-- </button> -->
+<form class="record-form">
+    <th>Description</th>
+    <th>Type</th>
+    <th>Amount</th>
+    <th>Date</th>
+    <ng-container *ngFor="let item of items">
+    <tr>
+    <td class="item-des">{{item.description}}</td>
+    <td class="item-des">{{item.type}}</td>
+    <td class="item-des">{{item.amount}}</td>
+    <td class="item-des">{{ item.createdTime | date :' yy/MM/dd'}}</td>
+    
     <button type="button" class="btn btn-outline-danger" title="delete item"
-    (click)="delete(item)">x</button>
-  <!-- </div> -->
-  </li></div>
-</ul>
+    (click)="delete(item)">x</button></tr>
+
+  </ng-container>
+</form>
+
+<!-- <table class="record-form">
+    <th>Description</th>
+    <th>Type</th>
+    <th>Amount</th>
+    <th>Date</th>
+    ng-container
+    <ng-container *ngFor="let item of items ">
+    <tr>
+    <td>{{ item.description }}</td>
+    <td>{{ item.type }}</td>
+    <td>{{ item.amount }}</td>
+    <td>{{ item.createdTime | date :' yy/MM/dd'}}</td>
+    <td><button type="button" class="btn btn-outline-danger" title="delete item"
+        (click)="delete(item)">x</button></td>
+    </tr>
+    </ng-container>
+    <tr>
+    <td><input [(ngModel)]="newItem.description" type="text"></td>
+    <td><input [(ngModel)]="newItem.type" type="text"></td>
+    <td><input [(ngModel)]="newItem.amount" type="text"></td>
+    <td><input [(ngModel)]="newItem.createdTime" type="datetime-local"></td>
+    <td><button (click)="add()" class="btn btn-primary" style="width: 100px;">Add</button></td>
+    </tr>
+</table> -->
+
 
 <div class="add-item">
-    <div>
-        <label >Description: </label>
-        <input id="new-des" #item/>
-    </div>
-    <div>
-        <label >Type: </label>
-        <input id="new-des" #item/>
-    </div>
-    <div>
-        <label >Amount: </label>
-        <input id="new-des" #item/>
-    </div>
 
-  
-    <!-- (click) passes input value to add() and then clears the input -->
-    <button type="button" class="btn btn-primary" (click)="add(item.value); item.value=''">
+        <label class="add-label">Description: </label>
+        <input id="new-des" #des/>
+   
+        <label class="add-label">Type: </label>
+        <input id="new-des" #type/>
+   
+        <label class="add-label">Amount: </label>
+        <input id="new-des" #amount/>
+
+    <button type="button" class="btn btn-primary" (click)="add(des.value,type.value,amount.value); ">
       Create
     </button>
   </div>

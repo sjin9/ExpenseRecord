@@ -26,10 +26,7 @@ app.UseRouting();
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.UseCors((x) =>
-{
-    x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
-});
+app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 app.MapControllerRoute(
     name: "default",

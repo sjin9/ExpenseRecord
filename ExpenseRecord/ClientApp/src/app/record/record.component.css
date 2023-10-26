@@ -9,8 +9,7 @@
 
 
 .item-des {
-    display: inline-block;
-    width: 310px;
+    width: 100px;
     
 }
 
@@ -21,19 +20,26 @@
     margin: 0 10px 0 0;
 }
 
-.list-group{
+.record-form{
   display: absolute;
   width: 410px;
   height: 350px;
-  margin-left: 18px;
+  margin-left: 80px;
   margin-top: 30px;
 }
 .add-item{
     display: absolute;
     margin-left: 40px;
-    vertical-align: middle;
 }
 
 .list-actions{
     margin-left: 50px;
+}
+
+.add-label{
+    margin-left: 20px;
+}
+
+.btn{
+    margin-left: 20px;
 }
