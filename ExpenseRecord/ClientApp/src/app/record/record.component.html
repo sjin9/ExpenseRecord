@@ -30,10 +30,10 @@
     <th>Date</th>
     <ng-container *ngFor="let item of items">
     <tr>
-    <td class="item-des">{{item.description}}</td>
-    <td class="item-des">{{item.type}}</td>
-    <td class="item-des">{{item.amount}}</td>
-    <td class="item-des">{{ item.createdTime | date :' yy/MM/dd'}}</td>
+    <td class="item-display">{{item.description}}</td>
+    <td class="item-display">{{item.type}}</td>
+    <td class="item-display">{{item.amount}}</td>
+    <td class="item-display">{{ item.createdTime | date :' yy/MM/dd'}}</td>
     
     <button type="button" class="btn btn-outline-danger" title="delete item"
     (click)="delete(item)">x</button></tr>
@@ -73,10 +73,10 @@
         <input id="new-des" #des/>
    
         <label class="add-label">Type: </label>
-        <input id="new-des" #type/>
+        <input id="new-type" #type/>
    
         <label class="add-label">Amount: </label>
-        <input id="new-des" #amount/>
+        <input id="new-amount" #amount/>
 
     <button type="button" class="btn btn-primary" (click)="add(des.value,type.value,amount.value); ">
       Create
